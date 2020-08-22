@@ -42,100 +42,118 @@ class __PageContentState extends State<_PageContent> {
     CalcButton("^", textAccent: true),
     CalcButton("sqr", textAccent: true),
     CalcButton("C", textAccent: true),
-
     CalcButton("7"),
     CalcButton("8"),
     CalcButton("9"),
     CalcButton("/", textAccent: true),
-
     CalcButton("4"),
     CalcButton("5"),
     CalcButton("6"),
     CalcButton("X", textAccent: true),
-
     CalcButton("1"),
     CalcButton("2"),
     CalcButton("3"),
     CalcButton("-", textAccent: true),
-
     CalcButton("0"),
     CalcButton("."),
     CalcButton("=", backgroundAccent: true),
     CalcButton("+", textAccent: true),
   ];
 
-
   @override
   Widget build(BuildContext context) {
     return NeumorphicBackground(
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Align(
-            alignment: Alignment.topLeft,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: NeumorphicButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                style: NeumorphicStyle(
-                  shape: NeumorphicShape.flat,
-                  boxShape: NeumorphicBoxShape.circle(),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 12),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Row(
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: NeumorphicButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      style: NeumorphicStyle(
+                        shape: NeumorphicShape.flat,
+                        boxShape: NeumorphicBoxShape.circle(),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(3.0),
+                        child: Icon(
+                          Icons.navigate_before,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(3.0),
-                  child: Icon(Icons.navigate_before,),
+                SizedBox(width: 50),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Padding(
+                      padding: const EdgeInsets.only(left: 10.0),
+                      child: Text(
+                        "Calculator",
+                        style: TextStyle(
+                          fontSize: 30,
+                        ),
+                      )),
                 ),
+              ],
+            ),
+            Expanded(
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: _TopScreenWidget(),
               ),
             ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: _TopScreenWidget(),
+            Expanded(
+              flex: 2,
+              child: GridView.count(
+                crossAxisCount: 4,
+                padding: const EdgeInsets.only(left: 40.0, right: 40.0),
+                children: List.generate(buttons.length, (index) {
+                  return WidgetCalcButton(buttons[index]);
+                }),
+              ),
             ),
-          ),
-          Expanded(
-            flex: 2,
-            child: GridView.count(
-              crossAxisCount: 4,
-              padding: const EdgeInsets.only(left: 40.0, right: 40.0),
-              children: List.generate(buttons.length, (index) {
-                return WidgetCalcButton(buttons[index]);
-              }),
-            ),
-          ),
-          // Row(
-          //   children: [
-          //     RaisedButton(
-          //       onPressed: () {
-          //         setState(() {
-          //           NeumorphicTheme.of(context).updateCurrentTheme(NeumorphicThemeData(
-          //             depth:4,
-          //             intensity: 0.8,
-          //             accentColor: Colors.cyan,
-          //           ));
-          //         });
-          //       },
-          //       child: Text("style 1"),
-          //     ),
-          //     RaisedButton(
-          //       onPressed: () {
-          //         setState(() {
-          //           NeumorphicTheme.of(context).updateCurrentTheme(NeumorphicThemeData(
-          //             depth:4,
-          //             intensity: 0.8,
-          //             accentColor: Colors.redAccent,
-          //           ));
-          //         });
-          //       },
-          //       child: Text("style 2"),
-          //     ),
-          //   ],
-          // )
-        ],
+            // Row(
+            //   children: [
+            //     RaisedButton(
+            //       onPressed: () {
+            //         setState(() {
+            //           NeumorphicTheme.of(context).updateCurrentTheme(NeumorphicThemeData(
+            //             depth:4,
+            //             intensity: 0.8,
+            //             accentColor: Colors.cyan,
+            //           ));
+            //         });
+            //       },
+            //       child: Text("style 1"),
+            //     ),
+            //     RaisedButton(
+            //       onPressed: () {
+            //         setState(() {
+            //           NeumorphicTheme.of(context).updateCurrentTheme(NeumorphicThemeData(
+            //             depth:4,
+            //             intensity: 0.8,
+            //             accentColor: Colors.redAccent,
+            //           ));
+            //         });
+            //       },
+            //       child: Text("style 2"),
+            //     ),
+            //   ],
+            // )
+          ],
+        ),
       ),
     );
   }

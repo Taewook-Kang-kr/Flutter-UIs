@@ -108,7 +108,7 @@ class __PageState extends State<_Page> {
                 boxShape: NeumorphicBoxShape.circle(),
               ),
               child: Icon(
-                Icons.favorite_border,
+                Icons.loop,
                 color: _iconsColor(),
               ),
             ),
