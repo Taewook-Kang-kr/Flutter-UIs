@@ -7,8 +7,6 @@ class AppBarCubit extends Cubit<double> {
   void setOffset(double offset) => emit(offset);
 }
 
-
-
 // event --> block --> state
 
 // Cubic
